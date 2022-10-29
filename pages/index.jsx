@@ -8,6 +8,42 @@ const Home = () => {
     <ProtectedRoute>
       <Layout>
         <Box>Home</Box>
+        <Box>Home</Box>
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box> <Box>Home</Box> <Box>Home</Box> <Box>Home</Box>{" "}
+        <Box>Home</Box>
       </Layout>
     </ProtectedRoute>
   );

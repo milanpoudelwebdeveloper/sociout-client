@@ -17,6 +17,11 @@ const NavBar = () => {
       py={3}
       px={4}
       borderBottom="1px solid lightgray"
+      position="sticky"
+      top={0}
+      zIndex={100}
+      bg="white"
+      h="70"
     >
       <Flex alignItems="center" gap={7}>
         <Link href="/">

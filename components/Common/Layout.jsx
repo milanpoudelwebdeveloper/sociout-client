@@ -1,6 +1,6 @@
 import { Box, Flex } from "@chakra-ui/react";
 import React from "react";
-import LeftBar from "../leftBar/leftBar";
+import LeftBar from "../LeftBar/LeftBar";
 import NavBar from "../NavBar/NavBar";
 import RightBar from "../RightBar/RightBar";
 
@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
       <NavBar />
       <Flex>
         <LeftBar />
-        {children}
+        <Box flex={6}>{children}</Box>
         <RightBar />
       </Flex>
     </Box>
