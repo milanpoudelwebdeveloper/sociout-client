@@ -9,6 +9,7 @@ import {
   Input,
   Text,
 } from "@chakra-ui/react";
+import Link from "next/link";
 import React from "react";
 
 const Login = () => {
@@ -73,16 +74,18 @@ const Login = () => {
                 <FormLabel fontWeight="normal">Password</FormLabel>
                 <Input type="password" placeholder="password" />
               </FormControl>
-              <Button
-                type="submit"
-                w="50%"
-                color="white"
-                bg="#938eef"
-                p={3}
-                borderRadius="none"
-              >
-                Login
-              </Button>
+              <Link href="/register">
+                <Button
+                  type="submit"
+                  w="50%"
+                  color="white"
+                  bg="#938eef"
+                  p={3}
+                  borderRadius="none"
+                >
+                  Login
+                </Button>
+              </Link>
             </Flex>
           </form>
         </Flex>
