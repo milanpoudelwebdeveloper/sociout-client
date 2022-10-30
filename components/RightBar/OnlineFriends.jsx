@@ -1,9 +1,10 @@
 import React from "react";
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text, useColorModeValue } from "@chakra-ui/react";
 
 const OnlineFriends = () => {
+  const textColor = useColorModeValue("light.text", "dark.text");
   return (
-    <Flex direction="column" gap={4} mt={5}>
+    <Flex direction="column" gap={4} mt={5} color={textColor}>
       <Flex alignItems="center" gap={2.5} position="relative">
         <Box
           w={3}

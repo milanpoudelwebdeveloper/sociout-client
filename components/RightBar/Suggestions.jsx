@@ -1,10 +1,16 @@
-import { Button, Flex, Image, Text } from "@chakra-ui/react";
+import { Button, Flex, Image, Text, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
 
 const Suggestions = () => {
+  const textColor = useColorModeValue("light.text", "dark.text");
   return (
     <>
-      <Flex justify="space-between" alignItems="center" mt={5}>
+      <Flex
+        justify="space-between"
+        alignItems="center"
+        mt={5}
+        color={textColor}
+      >
         <Flex alignItems="center" gap={2.5} fontWeight="medium">
           <Image
             src="https://bit.ly/sage-adebayo"

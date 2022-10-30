@@ -1,10 +1,16 @@
-import { Flex, Image, Text } from "@chakra-ui/react";
+import { Flex, Image, Text, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
 
 const LatestActivities = () => {
+  const textColor = useColorModeValue("light.text", "dark.text");
   return (
     <>
-      <Flex justify="space-between" alignItems="center" mt={5}>
+      <Flex
+        justify="space-between"
+        alignItems="center"
+        mt={5}
+        color={textColor}
+      >
         <Flex alignItems="center" gap={2.5}>
           <Image
             src="https://bit.ly/sage-adebayo"

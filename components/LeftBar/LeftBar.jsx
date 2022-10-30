@@ -1,10 +1,19 @@
-import { Box, Flex, Image, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Image,
+  Text,
+  useColorModeValue,
+  VStack,
+} from "@chakra-ui/react";
 import React from "react";
 import { leftBar, leftBarShortcuts, others } from "../../constants/leftBar";
 
 const LeftBar = () => {
+  const bg = useColorModeValue("light.bg", "dark.bg");
   return (
     <Flex
+      bg={bg}
       padding={5}
       direction="column"
       gap={3}
