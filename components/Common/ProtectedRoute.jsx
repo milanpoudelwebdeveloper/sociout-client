@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import { useRouter } from "next/router";
+import { AuthContext } from "../context/authContext";
 
 const ProtectedRoute = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const { isLoggedIn } = useContext(AuthContext);
   const router = useRouter();
 
   useEffect(() => {

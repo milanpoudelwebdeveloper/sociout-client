@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
@@ -16,6 +16,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { AuthContext } from "../context/authContext";
 
 const NavBar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -23,6 +24,8 @@ const NavBar = () => {
   const border = useColorModeValue("light.border", "dark.border");
   const text = useColorModeValue("light.text", "dark.text");
   const logoColor = useColorModeValue("light.logo", "dark.logo");
+
+  const { logOut } = useContext(AuthContext);
   return (
     <Flex
       justify="space-between"
@@ -72,7 +75,7 @@ const NavBar = () => {
       <Flex alignItems="center" gap={5}>
         <PersonOutlinedIcon />
         <EmailOutlinedIcon />
-        <NotificationsOutlinedIcon />
+        <NotificationsOutlinedIcon onClick={logOut} />
         <Flex alignItems="center" gap={2.5} fontWeight="medium">
           <Image
             src="https://bit.ly/sage-adebayo"
