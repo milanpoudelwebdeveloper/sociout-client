@@ -6,6 +6,9 @@ export const theme = extendTheme({
     useSystemColorMode: false,
   },
   colors: {
+    brand: {
+      100: "#5271ff",
+    },
     light: {
       bg: "white",
       text: "#000",
