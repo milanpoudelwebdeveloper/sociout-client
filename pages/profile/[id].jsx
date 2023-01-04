@@ -1,16 +1,16 @@
-import { Box } from "@chakra-ui/react";
 import React from "react";
 import Layout from "../../components/Common/Layout";
 import ProtectedRoute from "../../components/Common/ProtectedRoute";
+import Profile from "../../components/Profile/Profile";
 
-const Profile = () => {
+const ProfilePage = () => {
   return (
     <ProtectedRoute>
       <Layout>
-        <Box>Profile</Box>
+        <Profile />
       </Layout>
     </ProtectedRoute>
   );
 };
 
-export default Profile;
+export default ProfilePage;
