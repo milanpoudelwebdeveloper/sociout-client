@@ -6,7 +6,7 @@ export const useCustomToast = () => {
     toast({
       title,
       description: description || "",
-      status,
+      status: status || "success",
       duration: 3000,
       isClosable: true,
     });

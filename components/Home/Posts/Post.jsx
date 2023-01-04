@@ -9,6 +9,7 @@ import Link from "next/link";
 import Comments from "../Comments/Comments";
 
 const Post = ({ post }) => {
+  console.log("post is", post);
   const [commentOpen, setCommentOpen] = useState(false);
   const bg = useColorModeValue("light.bg", "dark.bg");
   const text = useColorModeValue("light.text", "dark.text");
@@ -24,9 +25,9 @@ const Post = ({ post }) => {
     >
       <Flex justifyContent="space-between">
         <Flex gap={5}>
-          <Link href={`/profile/${post?.userId}`}>
+          <Link href={`/profile/${post?.userid}`}>
             <Image
-              src={post.profilePic}
+              src={post?.profilepic}
               w={10}
               h={10}
               rounded="full"
@@ -35,21 +36,15 @@ const Post = ({ post }) => {
           </Link>
           <Flex direction="column" justify="start">
             <Text>{post?.name}</Text>
-            <Text>a minute ago</Text>
+            <Text>{post.createdat}</Text>
           </Flex>
         </Flex>
         <MoreHorizIcon />
       </Flex>
       <Box my={5}>
-        <Text>{post?.desc}</Text>
-        {post?.image && (
-          <Image
-            src={post?.image}
-            w="full"
-            maxH={300}
-            objectFit="cover"
-            mt={5}
-          />
+        <Text>{post?.descp}</Text>
+        {post?.img && (
+          <Image src={post?.img} w="full" maxH={300} objectFit="cover" mt={5} />
         )}
       </Box>
       <Box>

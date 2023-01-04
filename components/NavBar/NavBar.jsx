@@ -8,6 +8,7 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import {
+  Button,
   Flex,
   Image,
   Input,
@@ -25,7 +26,11 @@ const NavBar = () => {
   const text = useColorModeValue("light.text", "dark.text");
   const logoColor = useColorModeValue("light.logo", "dark.logo");
 
-  const { logOut } = useContext(AuthContext);
+  const { logOut, user } = useContext(AuthContext);
+  console.log("user here is", user);
+
+  const fallBackSrc =
+    "https://img.freepik.com/free-photo/purple-osteospermum-daisy-flower_1373-16.jpg?w=2000";
   return (
     <Flex
       justify="space-between"
@@ -73,19 +78,21 @@ const NavBar = () => {
         </Flex>
       </Flex>
       <Flex alignItems="center" gap={5}>
+        <Button onClick={logOut}>Log Out</Button>
         <PersonOutlinedIcon />
         <EmailOutlinedIcon />
         <NotificationsOutlinedIcon onClick={logOut} />
         <Flex alignItems="center" gap={2.5} fontWeight="medium">
           <Image
-            src="https://bit.ly/sage-adebayo"
+            fallbackSrc={fallBackSrc}
+            src={user?.profilepic}
             alt="Segun Adebayo"
             w={31}
             h={31}
             borderRadius={"50%"}
             objectFit="cover"
           />
-          <Text>Span Doe</Text>
+          <Text>{user?.name}</Text>
         </Flex>
       </Flex>
     </Flex>

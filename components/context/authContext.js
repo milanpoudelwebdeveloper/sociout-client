@@ -1,4 +1,6 @@
 import { createContext, useEffect, useState } from "react";
+import { axiosInstance } from "../../axiosConfig";
+import { useCustomToast } from "../../customHooks/useToast";
 
 const initialState = {
   user: null,
@@ -12,24 +14,42 @@ export const AuthContext = createContext(initialState);
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { showToast } = useCustomToast();
+
+  const checkLogin = async () => {
+    try {
+      const res = await axiosInstance.get("/auth/refresh");
+      setIsLoggedIn(true);
+      console.log("the user is", res?.data);
+      setUser(res?.data?.user);
+    } catch (e) {
+      console.log(e);
+      setIsLoggedIn(false);
+    }
+  };
+
+  const logOutHandler = async () => {
+    try {
+      const res = await axiosInstance.get("/auth/logout");
+      showToast(res?.data?.message);
+    } catch (e) {
+      showToast("Something went wrong.Please try again");
+    }
+  };
 
   useEffect(() => {
-    const loggedIn = localStorage.getItem("isLoggedIn");
-    if (loggedIn) {
-      setIsLoggedIn(true);
-    }
+    checkLogin();
   }, []);
 
-  const login = () => {
-    localStorage.setItem("isLoggedIn", true);
-    setUser({ username: "test" });
+  const login = (userData) => {
+    setUser(userData);
     setIsLoggedIn(true);
   };
 
   const logOut = () => {
     setUser(null);
+    logOutHandler();
     setIsLoggedIn(false);
-    localStorage.removeItem("isLoggedIn", false);
   };
 
   return (
