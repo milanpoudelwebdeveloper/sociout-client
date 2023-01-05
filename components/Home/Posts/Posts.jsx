@@ -5,12 +5,17 @@ import { useQuery } from "react-query";
 import { axiosInstance } from "../../../axiosConfig";
 
 const Posts = () => {
-  const { data, error, isSuccess } = useQuery("posts", () =>
-    axiosInstance.get("/posts").then((res) => res?.data?.posts)
+  const { data, isLoading } = useQuery(
+    "posts",
+    () => axiosInstance.get("/posts").then((res) => res?.data?.posts),
+    {
+      refetchOnWindowFocus: false,
+    }
   );
 
   return (
     <Flex direction="column" gap={12}>
+      {isLoading && <Box>Loading...</Box>}
       {data?.map((post) => (
         <Post key={post?.id} post={post} />
       ))}

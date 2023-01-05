@@ -7,14 +7,17 @@ import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Link from "next/link";
 import Comments from "../Comments/Comments";
+import moment from "moment";
 
 const Post = ({ post }) => {
-  console.log("post is", post);
   const [commentOpen, setCommentOpen] = useState(false);
   const bg = useColorModeValue("light.bg", "dark.bg");
   const text = useColorModeValue("light.text", "dark.text");
 
   const liked = false;
+
+  const fallBackSrc =
+    "https://img.freepik.com/free-photo/purple-osteospermum-daisy-flower_1373-16.jpg?w=2000";
   return (
     <Box
       p={5}
@@ -28,6 +31,7 @@ const Post = ({ post }) => {
           <Link href={`/profile/${post?.userid}`}>
             <Image
               src={post?.profilepic}
+              fallbackSrc={fallBackSrc}
               w={10}
               h={10}
               rounded="full"
@@ -36,7 +40,7 @@ const Post = ({ post }) => {
           </Link>
           <Flex direction="column" justify="start">
             <Text>{post?.name}</Text>
-            <Text>{post.createdat}</Text>
+            <Text>{moment(post.createdat).fromNow()}</Text>
           </Flex>
         </Flex>
         <MoreHorizIcon />

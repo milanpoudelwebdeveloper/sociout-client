@@ -27,8 +27,6 @@ const NavBar = () => {
   const logoColor = useColorModeValue("light.logo", "dark.logo");
 
   const { logOut, user } = useContext(AuthContext);
-  console.log("user here is", user);
-
   const fallBackSrc =
     "https://img.freepik.com/free-photo/purple-osteospermum-daisy-flower_1373-16.jpg?w=2000";
   return (
