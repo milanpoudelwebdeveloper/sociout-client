@@ -8,16 +8,18 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import moment from "moment";
-import React, { useContext } from "react";
-import { useQuery } from "react-query";
+import React, { useContext, useState } from "react";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { axiosInstance } from "../../../axiosConfig";
 import { AuthContext } from "../../context/authContext";
 
 const Comments = ({ postId }) => {
+  const [descp, setDescp] = useState("");
   const bg = useColorModeValue("light.bg", "dark.bg");
   const text = useColorModeValue("light.text", "dark.text");
   const border = useColorModeValue("light.border", "dark.border");
   const { user } = useContext(AuthContext);
+  const queryClient = useQueryClient();
 
   const { data, isLoading, error } = useQuery("comments", () =>
     axiosInstance
@@ -25,10 +27,28 @@ const Comments = ({ postId }) => {
       .then((res) => res?.data?.comments)
   );
 
+  const mutation = useMutation(
+    (newComment) =>
+      axiosInstance.post("/comments?postId=" + postId, newComment),
+    {
+      onSuccess: (data) => {
+        queryClient.setQueriesData("comments", (old) => [
+          data?.data?.newComment,
+          ...old,
+        ]);
+        setDescp("");
+      },
+    }
+  );
+
+  const postNewComment = (e) => {
+    e.preventDefault();
+    mutation.mutate({ descp, postId });
+  };
   const fallBackSrc =
     "https://img.freepik.com/free-photo/purple-osteospermum-daisy-flower_1373-16.jpg?w=2000";
 
-  console.log("comment is", data);
+  console.log("the comments data are", data);
   return (
     <Box bg={bg} color={text}>
       <Flex my={5} gap={5}>
@@ -49,6 +69,8 @@ const Comments = ({ postId }) => {
           bg="transparent"
           _focus={{ outline: "none", shadow: "none" }}
           _active={{ outline: "none", shadow: "none" }}
+          onChange={(e) => setDescp(e.target.value)}
+          value={descp}
         />
         <Button
           bg="brand.100"
@@ -57,6 +79,7 @@ const Comments = ({ postId }) => {
           border="none"
           borderRadius={5}
           color="white"
+          onClick={postNewComment}
         >
           Post
         </Button>
@@ -64,7 +87,7 @@ const Comments = ({ postId }) => {
       {data?.map((comment) => (
         <Flex my={8} gap={5} key={comment?.id}>
           <Image
-            src={comment?.profilePic}
+            src={comment?.profilepic}
             w={10}
             h={10}
             rounded="full"

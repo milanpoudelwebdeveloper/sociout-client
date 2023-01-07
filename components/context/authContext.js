@@ -20,7 +20,6 @@ export const AuthContextProvider = ({ children }) => {
     try {
       const res = await axiosInstance.get("/auth/refresh");
       setIsLoggedIn(true);
-      console.log("the user is", res?.data);
       setUser(res?.data?.user);
     } catch (e) {
       console.log(e);

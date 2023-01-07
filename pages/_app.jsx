@@ -7,12 +7,12 @@ const queryClient = new QueryClient();
 
 export default function MyApp({ Component, pageProps }) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ChakraProvider theme={theme}>
-        <AuthContextProvider>
+    <AuthContextProvider>
+      <QueryClientProvider client={queryClient}>
+        <ChakraProvider theme={theme}>
           <Component {...pageProps} />
-        </AuthContextProvider>
-      </ChakraProvider>
-    </QueryClientProvider>
+        </ChakraProvider>
+      </QueryClientProvider>
+    </AuthContextProvider>
   );
 }

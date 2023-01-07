@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
       <NavBar />
       <Flex>
         <LeftBar />
-        <Box flex={6} bg={bg} py={5} px={18}>
+        <Box flex={6} bg={bg} py={5} px={20}>
           {children}
         </Box>
         <RightBar />

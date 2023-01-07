@@ -7,10 +7,14 @@ const ProtectedRoute = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!isLoggedIn) {
-      router.push("/login");
-    }
+    const timeId = setTimeout(() => {
+      if (!isLoggedIn) {
+        router.push("/login");
+      }
+    }, 700);
+    return () => clearTimeout(timeId);
   }, [isLoggedIn]);
+
   return <>{isLoggedIn && children}</>;
 };
 

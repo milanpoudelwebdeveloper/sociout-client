@@ -26,8 +26,11 @@ const Share = () => {
   const mutation = useMutation(
     (newPost) => axiosInstance.post("/posts", newPost),
     {
-      onSuccess: () => {
-        queryClient.invalidateQueries("posts");
+      onSuccess: (data) => {
+        queryClient.setQueriesData("posts", (old) => [
+          data?.data?.post,
+          ...old,
+        ]);
       },
     }
   );

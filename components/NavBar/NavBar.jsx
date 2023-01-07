@@ -80,18 +80,21 @@ const NavBar = () => {
         <PersonOutlinedIcon />
         <EmailOutlinedIcon />
         <NotificationsOutlinedIcon onClick={logOut} />
-        <Flex alignItems="center" gap={2.5} fontWeight="medium">
-          <Image
-            fallbackSrc={fallBackSrc}
-            src={user?.profilepic}
-            alt="Segun Adebayo"
-            w={31}
-            h={31}
-            borderRadius={"50%"}
-            objectFit="cover"
-          />
-          <Text>{user?.name}</Text>
-        </Flex>
+
+        <Link href={`/profile/${user?.id}`}>
+          <Flex alignItems="center" gap={2.5} fontWeight="medium">
+            <Image
+              fallbackSrc={fallBackSrc}
+              src={user?.profilepic}
+              alt="Segun Adebayo"
+              w={31}
+              h={31}
+              borderRadius={"50%"}
+              objectFit="cover"
+            />
+            <Text>{user?.name}</Text>
+          </Flex>
+        </Link>
       </Flex>
     </Flex>
   );
