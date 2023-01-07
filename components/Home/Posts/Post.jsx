@@ -18,6 +18,7 @@ const Post = ({ post }) => {
 
   const fallBackSrc =
     "https://img.freepik.com/free-photo/purple-osteospermum-daisy-flower_1373-16.jpg?w=2000";
+
   return (
     <Box
       p={5}
@@ -72,7 +73,7 @@ const Post = ({ post }) => {
           </Flex>
         </Flex>
       </Box>
-      {commentOpen && <Comments />}
+      {commentOpen && <Comments postId={post?.id} />}
     </Box>
   );
 };

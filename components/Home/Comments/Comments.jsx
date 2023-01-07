@@ -7,42 +7,34 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-import React from "react";
+import moment from "moment";
+import React, { useContext } from "react";
+import { useQuery } from "react-query";
+import { axiosInstance } from "../../../axiosConfig";
+import { AuthContext } from "../../context/authContext";
 
-const Comments = () => {
+const Comments = ({ postId }) => {
   const bg = useColorModeValue("light.bg", "dark.bg");
   const text = useColorModeValue("light.text", "dark.text");
   const border = useColorModeValue("light.border", "dark.border");
-  const dummyData = [
-    {
-      id: 1,
-      name: "John Doe",
-      userId: 1,
-      profilePic: "https://picsum.photos/200",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex.",
-    },
-    {
-      id: 1,
-      name: "John Doe",
-      userId: 1,
-      profilePic: "https://picsum.photos/200",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex.",
-      image: "https://picsum.photos/200",
-    },
-    {
-      id: 1,
-      name: "John Doe",
-      userId: 1,
-      profilePic: "https://picsum.photos/200",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ex.",
-      image: "https://picsum.photos/200",
-    },
-  ];
+  const { user } = useContext(AuthContext);
+
+  const { data, isLoading, error } = useQuery("comments", () =>
+    axiosInstance
+      .get("/comments?postId=" + postId)
+      .then((res) => res?.data?.comments)
+  );
+
+  const fallBackSrc =
+    "https://img.freepik.com/free-photo/purple-osteospermum-daisy-flower_1373-16.jpg?w=2000";
+
+  console.log("comment is", data);
   return (
     <Box bg={bg} color={text}>
       <Flex my={5} gap={5}>
         <Image
-          src={dummyData[0].profilePic}
+          src={user?.profilepic}
+          fallbackSrc={fallBackSrc}
           alt="profile pic"
           w={10}
           h={10}
@@ -69,10 +61,10 @@ const Comments = () => {
           Post
         </Button>
       </Flex>
-      {dummyData.map((comment) => (
-        <Flex my={8} gap={5}>
+      {data?.map((comment) => (
+        <Flex my={8} gap={5} key={comment?.id}>
           <Image
-            src={comment.profilePic}
+            src={comment?.profilePic}
             w={10}
             h={10}
             rounded="full"
@@ -81,10 +73,10 @@ const Comments = () => {
 
           <Flex direction="column" flex={5} gap={1}>
             <Text fontWeight="medium">{comment?.name}</Text>
-            <Text>{comment?.desc}</Text>
+            <Text>{comment?.descp}</Text>
           </Flex>
           <Text flex={1} alignSelf="center" color="gray" fontSize="sm">
-            1 hour ago
+            {moment(comment?.createdAt).fromNow()}
           </Text>
         </Flex>
       ))}
